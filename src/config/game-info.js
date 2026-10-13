@@ -6,7 +6,7 @@ module.exports = {
   slug: 'aklat-arena',          // our group's game
   name: 'AklatArena',
   team: 'Kadlagan Devs (3-1)',
-  developer: 'rhallig-kd',      // my GitHub username: this build is mine
+  developer: 'SorSuAi',      // my GitHub username: this build is mine
   description: 'Answer fast and correctly to top the arena leaderboard.',
   min_players: 2,
   max_players: 60,
