@@ -1,10 +1,12 @@
-# [Your Game Title] API
+# AklatArena API
 
-Backend API for **[Your Game Title]**, a tournament game for the SorSU Bulan Campus library.
+Backend API for **AklatArena**, a tournament game for the SorSU Bulan Campus library.
 CS 313 Software Engineering 1, A.Y. 2026-2027.
 
-- Developer: [Your full name] ([your GitHub username]), BSCS [3-1 or 3-2]
-- Group and game concept: [Group name]
+- Developer: R. Hallig (rhallig-kd), BSCS 3-1
+- Group and game concept: Kadlagan Devs (3-1)
+
+> AklatArena is the instructor's worked example. The developer, school IDs (2099...) and emails (.test) are fictitious. Reuse the structure; the content must come from your own game.
 
 This is my own build of my group's game concept. Every commit in this repository was made by me, with Git, on my own computer or in my own Codespace.
 
@@ -20,8 +22,8 @@ This is my own build of my group's game concept. Every commit in this repository
 ## Setup
 
 ```
-git clone [repository-url]
-cd [folder-name]
+git clone https://github.com/rhallig-kd/aklat-arena-api.git
+cd aklat-arena-api
 npm install
 ```
 
@@ -43,7 +45,7 @@ npm run dev
 | PORT | 3001 | Port the API listens on (the library assigns the final port at deployment) |
 | DB_HOST | 127.0.0.1 | PostgreSQL host |
 | DB_PORT | 5432 | PostgreSQL port |
-| DB_NAME | your_game_slug | Database name: your game slug, with underscores |
+| DB_NAME | aklat_arena | Database name: your game slug, with underscores |
 | DB_USER | postgres | Database user |
 | DB_PASSWORD | (your own) | Database password. Never commit this. |
 | HUB_API_KEY | dev-hub-key | Key the Library Game Hub sends to read results. The library gives the real one at deployment. |
@@ -60,11 +62,17 @@ Base URL: `http://localhost:3001/api/v1`
 
 ## What "completed" means in my game
 
-[One or two sentences: when does a player count as having completed a game? For example: "A player completed the game when they answered every question, even if some answers were wrong or timed out."]
+A player completed a game when they have an answer for every question of the question set. A wrong answer or a timed-out answer still counts as answered. A player who left before the last question is listed in the results with `"completed": false` and is not ranked.
 
 ## Tables
 
-[List your tables, one line each, in the order of your migrations.]
+1. `users`: every person (player, host, admin), from Design Change Notice 01
+2. `question_sets`: a host's set of questions
+3. `questions`: the questions of a set, in order
+4. `choices`: four choices per question
+5. `game_sessions`: one game, with its six-digit join code and status (LOBBY, RUNNING, CLOSED)
+6. `players`: one seat per account per game (`uq_one_seat`)
+7. `answers`: one answer per player per question
 
 ## Database scripts
 
